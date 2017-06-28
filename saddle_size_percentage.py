@@ -1,5 +1,6 @@
 ''' 
-
+small script that computes the probabilities of a game of size m having a strict saddle of a certain size
+does so by analyzing the results of SaddlePy
 '''
 import sys
 import math
@@ -23,16 +24,18 @@ def compute_all_percentages(size_game):
 
 
 
-
 if __name__ == '__main__':
 
-	m = int(sys.argv[1])
+	filename = sys.argv[1]
 
-	for i in range(2,m+1):
-		print "Percentages for game size " + str(i)
-		compute_all_percentages(i)
-		print ""
+	with open(filename, 'r') as in_file:
+		file_content = in_file.read()
 
+	print file_content
 
+	#for i in range(2,m+1):
+	#	print "Percentages for game size " + str(i)
+	#	compute_all_percentages(i)
+	#	print ""
 
 
