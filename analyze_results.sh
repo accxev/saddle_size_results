@@ -2,16 +2,24 @@
 #!/bin/bash
 
 
-in_file=$1
+i=$1
 
 #TODO store saddle size too
 counter=0
-for f in SymmetricRandomZeroSum/9.txt; do
+for f in SymmetricRandomZeroSum/10.txt; do
 	echo $f
 	result=$(sed -e 's/ /\n/g' $f | sort | uniq -c)
+
+	flag=0
 	for i in $result; do
-		echo $i >> SymmetricRandomZeroSum/9_count.txt
+		if [[ $flag == 0 ]]; then
+			echo "0"
+		fi
+
 	done
+	#for i in $result; do
+		#echo $i >> SymmetricRandomZeroSum/9_count.txt
+	#done
 	#echo $result >> SymmetricRandomZeroSum/9_count.txt
 	#echo \n >> SymmetricRandomZeroSum/9_count.txt
 
@@ -19,14 +27,15 @@ for f in SymmetricRandomZeroSum/9.txt; do
 	sum=0
 	for i in $tmp; do
 		sum=$((sum+i))
-		echo $sum
-		echo $i
+		#echo $sum
+		#echo $i
 	done
 	sum=$((sum-43))
-	echo $sum
+	#echo $sum
 done
 
-echo $sum #>> SymmetricRandomZeroSum/9_count.txt
+#echo $sum #>> SymmetricRandomZeroSum/9_count.txt
 
-sed -e 's/ /\n/g' SymmetricRandomZeroSum/3.txt | sort | uniq -c
+sed -e 's/ /\n/g' SymmetricRandomZeroSum/12.txt | sort | uniq -c
+sed -e 's/ /\n/g' /home/accxev/Dropbox/MasterThesis/SaddleScripts/GAMUT/games/counters_from_GG/12.txt | sort | uniq -c
 
