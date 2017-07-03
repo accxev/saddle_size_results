@@ -7,14 +7,17 @@ i=$1
 #TODO store saddle size too
 counter=0
 for f in SymmetricRandomZeroSum/10.txt; do
+	sed -e 's/ /\n/g' $f | sort -n | uniq -c | sed -e 's/ *\([0-9]*\) \([0-9]*\)/\2 \1/g' #>> 10_counter.txt
 	echo $f
-	result=$(sed -e 's/ /\n/g' $f | sort | uniq -c)
+	result=$(sed -e 's/ /\n/g' $f | sort -n | uniq -c)
+	echo $result
 
 	flag=0
 	for i in $result; do
-		if [[ $flag == 0 ]]; then
-			echo "0"
-		fi
+		#if [[ $flag == 0 ]]; then
+		#	echo "0"
+		#fi
+		echo $i
 
 	done
 	#for i in $result; do
@@ -36,6 +39,6 @@ done
 
 #echo $sum #>> SymmetricRandomZeroSum/9_count.txt
 
-sed -e 's/ /\n/g' SymmetricRandomZeroSum/12.txt | sort | uniq -c
-sed -e 's/ /\n/g' /home/accxev/Dropbox/MasterThesis/SaddleScripts/GAMUT/games/counters_from_GG/12.txt | sort | uniq -c
+#sed -e 's/ /\n/g' SymmetricRandomZeroSum/12.txt | sort -n | uniq -c
+#sed -e 's/ /\n/g' /home/accxev/Dropbox/MasterThesis/SaddleScripts/GAMUT/games/counters_from_GG/12.txt | sort | uniq -c
 
