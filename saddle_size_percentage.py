@@ -12,7 +12,7 @@ def	convert_rel_saddlesizes(saddle_list, size):
 	for i,x in enumerate(saddle_list):
 		saddle_string = saddle_string + " " + str(x) + " "
 	saddle_string = saddle_string + "\n \n"
-	print saddle_string
+	#print saddle_string
 	return saddle_string
 
 def write_relative_to_file(filename, saddle_list, size):
@@ -35,8 +35,8 @@ if __name__ == '__main__':
 		counter = 0
 		file_content = in_file.read()
 		file_list = file_content.split()
-		size = int(max(file_list))
-		print size
+		results = map(int, file_list)
+		size=max(results)
 		counter_list = [0]*(size)
 		for i in file_list:
 			counter_list[int(i)-1] = counter_list[int(i)-1]+1
