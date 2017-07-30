@@ -7,31 +7,17 @@ import math
 import numpy as np
 
 
-def binomial_coefficient(n,k):
-	#n!/k!(n-k)!
-	return math.factorial(n) / (math.factorial(k)*math.factorial(n-k))
+def	convert_rel_saddlesizes(saddle_list, size):
+	saddle_string = str(size) + " "
+	for i,x in enumerate(saddle_list):
+		saddle_string = saddle_string + " " + str(x) + " "
+	saddle_string = saddle_string + "\n \n"
+	print saddle_string
+	return saddle_string
 
-def percentage_nasheq(size_game, size_support):
-	#print "Compute percentage of Nash equlibria of size " + str(size_support) + " in games of size " + str(size_game)
-	if (size_support % 2 == 0):
-		return 0
-	else:
-		return binomial_coefficient(size_game, size_support)*math.pow(2, -(size_game - 1))
+def write_relative_to_file(saddle_list, size):
 
-def compute_all_percentages(size_game):
-	for i in range(1,size_game+1):		
-		print str(i) + ": " + str(percentage_nasheq(size_game, i))
-
-
-def	convert_rel_saddlesizes(list):
-	for i in list:
-		print i
-
-def write_relative_to_file(list):
-
-	convert_rel_saddlesizes(list)
-	print "Party!!"
-	return None
+	saddle_string = convert_rel_saddlesizes(saddle_list, size)
 
 
 
@@ -43,32 +29,23 @@ if __name__ == '__main__':
 		counter = 0
 		file_content = in_file.read()
 		file_list = file_content.split()
-		counter_list = [0]*101
+		size = int(max(file_list))
+		print size
+		counter_list = [0]*(size)
 		for i in file_list:
-			counter_int = int(i)
-			counter_list[counter_int] = counter_list[counter_int]+1
+			counter_list[int(i)-1] = counter_list[int(i)-1]+1
 			counter=counter+1
 			
-			#print i
 
-		counter_list_relative = [0]*101
+		counter_list_relative = [0]*(size)
 		for i,x in enumerate(counter_list): 
-		#for i,x in counter_list:
-			#print i
-			#print x
-			#index = counter_list.index(i)
 			counter_list_relative[i] = float(x) / float(counter)
 
 	print counter_list
 	print counter
 	print counter_list_relative
 
-	write_relative_to_file(counter_list_relative)
-	#print file_content
+	write_relative_to_file(counter_list_relative, size)
 
-	#for i in range(2,m+1):
-	#	print "Percentages for game size " + str(i)
-	#	compute_all_percentages(i)
-	#	print ""
 
 
