@@ -19,7 +19,7 @@ unset key
 set yrange [0:1]
 set xrange [-2:60]
 set border 0
-category = "2 3 4 5"
+category = "2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17"
 set xtics scale 0 ()
 set ytics scale 0 nomirror
 set grid y
@@ -33,6 +33,16 @@ set for [i=1:4] xtics add (word(category,i) 5+(i-1)*ClusterSize)
 xcoord(i) =  i*ClusterSize + column(1)
 color(i)  = rand(0)
 
-plot for [i=0:3] '11_rel.dat' index i matrix every ::1 \
+plot for [i=0:1] '11_rel.dat' index i matrix every ::1 \
      using ($1+i*ClusterSize):3 with boxes
 #     using (xcoord(i)):(column(i+4)):(word(colors, i+1)) with boxes lc palette z
+
+replot for [i=0:1] '12_rel.dat' index i matrix every ::1 \
+     using ($1+i*ClusterSize+24):3 with boxes
+#     using (xcoord(i)):(column(i+4)):(word(colors, i+1)) with boxes lc palette z
+
+replot for [i=0:1] '13_rel.dat' index i matrix every ::1 \
+     using ($1+i*ClusterSize+45):3 with boxes
+
+replot for [i=0:1] '8_rel.dat' index i matrix every ::1 \
+     using ($1+i*ClusterSize-30):3 with boxes
