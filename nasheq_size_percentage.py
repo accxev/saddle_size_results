@@ -47,7 +47,7 @@ if __name__ == '__main__':
 	percentage_string = print_all_percentages(i, eq_list)
 		#eq_list = str(i) + " " + str(eq_percentages)
 		#print "eq_list " + str(eq_list)
-	filename = str(i) + "_rel.txt"
+	filename = str(i) + "_rel.dat"
 	with open(filename, "a") as out_file:
 		out_file.write(percentage_string)
 

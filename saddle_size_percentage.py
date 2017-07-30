@@ -51,7 +51,7 @@ if __name__ == '__main__':
 	print counter
 	print counter_list_relative
 
-	filename_out = str(size) + "_rel.txt"
+	filename_out = str(size) + "_rel.dat"
 	write_relative_to_file(filename_out, counter_list_relative, size)
 
 
