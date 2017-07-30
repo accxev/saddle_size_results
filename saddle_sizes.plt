@@ -33,6 +33,6 @@ set for [i=1:4] xtics add (word(category,i) 5+(i-1)*ClusterSize)
 xcoord(i) =  i*ClusterSize + column(1)
 color(i)  = rand(0)
 
-plot for [i=0:3] 'test.dat' \
-     using (xcoord(i)):(column(i+4)):(color(i)) with boxes lc palette z
-
+plot for [i=0:3] 'test.dat' index i matrix every ::1 \
+     using ($1+i*ClusterSize):3 with boxes
+#     using (xcoord(i)):(column(i+4)):(word(colors, i+1)) with boxes lc palette z
