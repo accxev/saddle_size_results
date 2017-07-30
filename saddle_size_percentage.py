@@ -15,9 +15,15 @@ def	convert_rel_saddlesizes(saddle_list, size):
 	print saddle_string
 	return saddle_string
 
-def write_relative_to_file(saddle_list, size):
+def write_relative_to_file(filename, saddle_list, size):
+	print filename
 
 	saddle_string = convert_rel_saddlesizes(saddle_list, size)
+
+	with open(filename, 'w') as out_file:
+		out_file.write(saddle_string)
+		
+
 
 
 
@@ -45,7 +51,8 @@ if __name__ == '__main__':
 	print counter
 	print counter_list_relative
 
-	write_relative_to_file(counter_list_relative, size)
+	filename_out = str(size) + "_rel.txt"
+	write_relative_to_file(filename_out, counter_list_relative, size)
 
 
 
