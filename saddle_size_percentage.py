@@ -23,15 +23,48 @@ def compute_all_percentages(size_game):
 		print str(i) + ": " + str(percentage_nasheq(size_game, i))
 
 
+def	convert_rel_saddlesizes(list):
+	for i in list:
+		print i
+
+def write_relative_to_file(list):
+
+	convert_rel_saddlesizes(list)
+	print "Party!!"
+	return None
+
+
 
 if __name__ == '__main__':
 
 	filename = sys.argv[1]
 
 	with open(filename, 'r') as in_file:
+		counter = 0
 		file_content = in_file.read()
+		file_list = file_content.split()
+		counter_list = [0]*101
+		for i in file_list:
+			counter_int = int(i)
+			counter_list[counter_int] = counter_list[counter_int]+1
+			counter=counter+1
+			
+			#print i
 
-	print file_content
+		counter_list_relative = [0]*101
+		for i,x in enumerate(counter_list): 
+		#for i,x in counter_list:
+			#print i
+			#print x
+			#index = counter_list.index(i)
+			counter_list_relative[i] = float(x) / float(counter)
+
+	print counter_list
+	print counter
+	print counter_list_relative
+
+	write_relative_to_file(counter_list_relative)
+	#print file_content
 
 	#for i in range(2,m+1):
 	#	print "Percentages for game size " + str(i)
